@@ -1,11 +1,15 @@
 import { useState } from "react";
 import Modal from "./Modal";
 
-const Button = () => {
+const Button = ({ addNote }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpen = () => {
     setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -16,7 +20,7 @@ const Button = () => {
         </span>
         {modalOpen && (
           <div className="modal-overlay">
-            <Modal />
+            <Modal handleClose={handleClose} addNote={addNote} />
           </div>
         )}
       </div>
